@@ -10,8 +10,12 @@
 
 @interface DigestActor : NSObject
 
-- (NSString *)MD5Digest:(NSString *)stringToDigest;
-- (NSString *)SHA1Digest:(NSString *)stringToDigest;
-- (NSString *)SHA256Digest:(NSString *)stringToDigest;
+- (NSString *)stringByMD5Digest:(NSString *)stringToDigest;
+- (NSString *)stringBySHA1Digest:(NSString *)stringToDigest;
+- (NSString *)stringBySHA256Digest:(NSString *)stringToDigest;
+
+- (NSData *)dataByMD5Digest:(NSString *)stringToDigest;
+- (NSData *)dataBySHA1Digest:(NSString *)stringToDigest;
+- (NSData *)dataBySHA256Digest:(NSString *)stringToDigest;
 
 @end
