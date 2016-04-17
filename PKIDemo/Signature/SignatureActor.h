@@ -10,6 +10,7 @@
 
 @interface SignatureActor : NSObject
 
-- (NSData *)signUsingData:(NSData *)dataToSign;
-- (BOOL)verifyUsingData:(NSData *)signedData signature:(NSData *)signature;
+- (NSString *)generateSignatureUsingPlainText:(NSString *)plainText withPrivateKey:(SecKeyRef)privateKey;
+- (BOOL)verifySignature:(NSString *)signature withPlainText:(NSString *)plainText withPublicKey:(SecKeyRef)publicKey;
+
 @end
