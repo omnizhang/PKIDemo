@@ -7,15 +7,17 @@
 //
 
 #import "ViewController.h"
+#import "KeyPairGenerator.h"
 #import "DESCipherActor.h"
 #import "AESCipherActor.h"
 #import "RC4CipherActor.h"
 #import "RSACipherActor.h"
 #import "DigestActor.h"
+#import "PwdCipherActor.h"
 #import "SignatureActor.h"
 
 @interface ViewController ()
-@property (strong, nonatomic) SignatureActor *sig;
+@property (strong, nonatomic) KeyPairGenerator *keyPairGenerator;
 @end
 
 @implementation ViewController
@@ -24,12 +26,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.keyPairGenerator = [KeyPairGenerator new];
+    [self.keyPairGenerator generateKeyPair];
     //    Do any additional setup after loading the view, typically from a nib.
 //    [self desTest];
 //    [self rc4Test];
 //    [self rsaTest];
-    [self digestTest];
-    //    [self signatureDemoTest];
+//    [self digestTest];
+//    [self signatureTest];
+    [self pwdCipherTest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,29 +96,50 @@
 - (void)rsaTest {
     RSACipherActor *rsaCipherActor = [[RSACipherActor alloc] init];
     NSString *plainString = @"testteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasadasdqwdqwfqwascasdaksjflkajglkjdlkasghiejrdlkwfnl";
-    NSString *cipherString = [rsaCipherActor encryptWithPublicKey:plainString];
+    SecKeyRef publicKey = [self.keyPairGenerator getPublicKeyFromKeyChain];
+    NSString *cipherString = [rsaCipherActor encrypt:plainString withPublicKey:publicKey];
     NSLog(@"cipherText: %@", cipherString);
-    plainString = [rsaCipherActor decryptWithPrivateKey:cipherString];
+    SecKeyRef privateKey = [self.keyPairGenerator getPrivateKeyFromKeyChain];
+    plainString = [rsaCipherActor decrypt:cipherString withPrivateKey:privateKey];
     NSLog(@"plainText: %@", plainString);
 }
 
 - (void)digestTest {
     DigestActor *digestActor = [DigestActor new];
     NSString *stringToDigest = @"test Digest";
-    NSString *result = [digestActor MD5Digest:stringToDigest];
+    NSString *result = [digestActor stringByMD5Digest:stringToDigest];
     NSLog(@"result: %@", result);
 }
 
-- (void)signatureDemoTest {
-    self.sig = [SignatureActor new];
+- (void)signatureTest {
+    SignatureActor *signatureActor = [SignatureActor new];
     NSString *stringToSig = @"test Signature";
-    NSData *data = [stringToSig dataUsingEncoding:NSUTF8StringEncoding];
     //签名
-    NSData *sigResult = [self.sig signUsingData:data];
-    NSLog(@"result = %s, length = %lu", [sigResult bytes], [sigResult length]);
+    SecKeyRef privateKey = [self.keyPairGenerator getPrivateKeyFromKeyChain];
+    NSString *signature = [signatureActor generateSignatureUsingPlainText:stringToSig withPrivateKey:privateKey];
+    NSLog(@"result: %@", signature);
     //验证签名
-    BOOL verifyResult = [self.sig verifyUsingData:data signature:sigResult];
-    NSLog(@"%i",verifyResult);
+    SecKeyRef publicKey = [self.keyPairGenerator getPublicKeyFromKeyChain];
+    BOOL verifyResult = [signatureActor verifySignature:signature withPlainText:stringToSig withPublicKey:publicKey];
+    NSLog(@"verifyResult: %@",verifyResult?@"YES":@"NO");
+}
+
+- (void)pwdCipherTest {
+    PwdCipherActor *pwdCipherActor = [PwdCipherActor new];
+    NSString *plainText = @"test Pwd";
+    static const char gSalt[] =
+    {
+        (unsigned char)0xAA, (unsigned char)0xAA, (unsigned char)0xAA, (unsigned char)0xAA,
+        (unsigned char)0xAA, (unsigned char)0xAA, (unsigned char)0xAA, (unsigned char)0xAA
+    };
+    NSData *salt = [NSData dataWithBytes:gSalt length:sizeof(gSalt)/sizeof(gSalt[0])];
+    NSData *key = [pwdCipherActor generateKeyWithPassword:@"12345678" andSalt:salt andIterating:16];
+    
+    NSString *cipherText = [pwdCipherActor DESEncrypt:plainText withPwdKey:key];
+    NSLog(@"cipherText: %@", cipherText);
+    
+    plainText = [pwdCipherActor DESDecrypt:cipherText withPwdKey:key];
+    NSLog(@"%@", plainText);
 }
 
 @end
