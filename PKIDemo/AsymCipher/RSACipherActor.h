@@ -10,7 +10,7 @@
 
 @interface RSACipherActor : NSObject
 
-- (NSString *)encryptWithPublicKey:(NSString *)stringToEncrypt;
-- (NSString *)decryptWithPrivateKey:(NSString *)stringToDecrypt;
+- (NSString *)encrypt:(NSString *)stringToEncrypt withPublicKey:(SecKeyRef)publicKey;
+- (NSString *)decrypt:(NSString *)stringToDecrypt withPrivateKey:(SecKeyRef)privateKey;
 
 @end

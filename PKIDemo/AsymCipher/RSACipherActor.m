@@ -8,25 +8,15 @@
 
 #import "RSACipherActor.h"
 #import <Security/Security.h>
-#import "KeyPairGenerator.h"
 #import "GTMBase64.h"
 
 @interface RSACipherActor()
-@property (strong, nonatomic) KeyPairGenerator *keyPairGenerator;
+
 @end
 
 @implementation RSACipherActor
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.keyPairGenerator = [KeyPairGenerator new];
-        [self.keyPairGenerator generateKeyPair];
-    }
-    return self;
-}
-
-- (NSString *)encryptWithPublicKey:(NSString *)stringToEncrypt {
+- (NSString *)encrypt:(NSString *)stringToEncrypt withPublicKey:(SecKeyRef)publicKey{
     
     OSStatus status = noErr;
     
@@ -36,12 +26,6 @@
     uint8_t *dataToEncrypt = (uint8_t *)[stringToEncrypt cStringUsingEncoding:NSUTF8StringEncoding];
     size_t dataLength = stringToEncrypt.length;
     NSLog(@"dataLength: %zu", dataLength);
-    
-    SecKeyRef publicKey = [self.keyPairGenerator getPublicKeyFromKeyChain];
-    if (publicKey == NULL) {
-        NSLog(@"can not find the publicKey");
-        return nil;
-    }
     
     cipherBufferSize = SecKeyGetBlockSize(publicKey);
     cipherBuffer = malloc(cipherBufferSize);
@@ -87,7 +71,7 @@
     return encryptedString;
 }
 
-- (NSString *)decryptWithPrivateKey: (NSString *)stringToDecrypt {
+- (NSString *)decrypt: (NSString *)stringToDecrypt withPrivateKey:(SecKeyRef)privateKey {
     NSData *dataToDecrypt = [GTMBase64 decodeString:stringToDecrypt];
     OSStatus status = noErr;
     
@@ -96,12 +80,6 @@
 
     size_t plainBufferSize;
     uint8_t *plainBuffer;
-    
-    SecKeyRef privateKey = [self.keyPairGenerator getPrivateKeyFromKeyChain];
-    if (privateKey == NULL) {
-        NSLog(@"Can not find the privateKey");
-        return nil;
-    }
     
     plainBufferSize = SecKeyGetBlockSize(privateKey);
     plainBuffer = malloc(plainBufferSize);
