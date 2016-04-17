@@ -51,7 +51,8 @@
 }
 
 
-- (OSStatus)getPrivateKey:(SecKeyRef *)privateKey {
+- (SecKeyRef)getPrivateKeyFromKeyChain {
+    SecKeyRef privateKey;
     
     NSData *privateTag = [NSData dataWithBytes:privateKeyIdentifier length:strlen((const char *)privateKeyIdentifier)];
     
@@ -62,12 +63,18 @@
     [queryPrivate setObject:@(YES) forKey:(__bridge id)kSecReturnRef];
     
     OSStatus status = noErr;
-    status = SecItemCopyMatching((__bridge CFDictionaryRef) queryPrivate, (CFTypeRef *)privateKey);
+    status = SecItemCopyMatching((__bridge CFDictionaryRef) queryPrivate, (CFTypeRef *)&privateKey);
+
+    if (status != noErr) {
+        NSLog(@"can not find the private Key");
+        return nil;
+    }
     
-    return status;
+    return privateKey;
 }
 
-- (OSStatus)getPublicKey:(SecKeyRef *)publicKey {
+- (SecKeyRef)getPublicKeyFromKeyChain {
+    SecKeyRef publicKey;
     
     NSData *publicTag = [NSData dataWithBytes:publicKeyIdentifier length:strlen((const char *)publicKeyIdentifier)];
     
@@ -78,9 +85,14 @@
     [queryPublic setObject:@(YES) forKey:(__bridge id)kSecReturnRef];
     
     OSStatus status = noErr;
-    status = SecItemCopyMatching((__bridge CFDictionaryRef)queryPublic, (CFTypeRef *)publicKey);
+    status = SecItemCopyMatching((__bridge CFDictionaryRef)queryPublic, (CFTypeRef *)&publicKey);
     
-    return status;
+    if (status != noErr) {
+        NSLog(@"can not find the public Key");
+        return NULL;
+    }
+    
+    return publicKey;
 }
 
 

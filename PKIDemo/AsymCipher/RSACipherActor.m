@@ -37,11 +37,10 @@
     size_t dataLength = stringToEncrypt.length;
     NSLog(@"dataLength: %zu", dataLength);
     
-    SecKeyRef publicKey = NULL;
-    status = [self.keyPairGenerator getPublicKey:&publicKey];
-    if (status != noErr) {
+    SecKeyRef publicKey = [self.keyPairGenerator getPublicKeyFromKeyChain];
+    if (publicKey == NULL) {
         NSLog(@"can not find the publicKey");
-        return NULL;
+        return nil;
     }
     
     cipherBufferSize = SecKeyGetBlockSize(publicKey);
@@ -98,11 +97,8 @@
     size_t plainBufferSize;
     uint8_t *plainBuffer;
     
-    SecKeyRef privateKey = NULL;
-    
-    status = [self.keyPairGenerator getPrivateKey:&privateKey];
-    
-    if (status != noErr) {
+    SecKeyRef privateKey = [self.keyPairGenerator getPrivateKeyFromKeyChain];
+    if (privateKey == NULL) {
         NSLog(@"Can not find the privateKey");
         return nil;
     }

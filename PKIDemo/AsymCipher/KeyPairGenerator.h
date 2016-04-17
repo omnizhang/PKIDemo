@@ -14,7 +14,7 @@ static const UInt8 privateKeyIdentifier[] = "net.netca.sample.privateKey";
 @interface KeyPairGenerator : NSObject
 
 - (void)generateKeyPair;
-- (OSStatus)getPrivateKey:(SecKeyRef *)privateKey;
-- (OSStatus)getPublicKey:(SecKeyRef *)publicKey;
+- (SecKeyRef)getPrivateKeyFromKeyChain;
+- (SecKeyRef)getPublicKeyFromKeyChain;
 
 @end
