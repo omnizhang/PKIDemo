@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,28 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="bJG-Eq-hZN">
-                                <rect key="frame" x="-4" y="0.0" width="328" height="341"/>
-                            </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MH2-I9-add">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2z-Di-pAQ" customClass="MainEffectView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="GtP-cv-5Ih">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MH2-I9-add" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="03c-i9-euB"/>
-                            <constraint firstItem="bJG-Eq-hZN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="57Z-Ix-4NY"/>
-                            <constraint firstItem="bJG-Eq-hZN" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="60:100" id="CpR-Jm-QrU"/>
-                            <constraint firstItem="bJG-Eq-hZN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="HGw-JG-Xxs"/>
-                            <constraint firstItem="MH2-I9-add" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="dQB-ad-Dgu"/>
-                            <constraint firstItem="MH2-I9-add" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="i3y-3X-1mm"/>
-                            <constraint firstItem="MH2-I9-add" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="kE0-4o-yq1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bJG-Eq-hZN" secondAttribute="trailing" constant="-20" id="nQv-UZ-PQr"/>
+                            <constraint firstItem="f2z-Di-pAQ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="ASr-wE-VO2"/>
+                            <constraint firstItem="f2z-Di-pAQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="GgU-1e-cHh"/>
+                            <constraint firstItem="f2z-Di-pAQ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="UCg-dp-rrt"/>
+                            <constraint firstItem="f2z-Di-pAQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="UYJ-ok-JcJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ib3-7E-yNW"/>
@@ -68,7 +56,4 @@
             <point key="canvasLocation" x="304" y="472"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="bg" width="320" height="224"/>
-    </resources>
 </document>

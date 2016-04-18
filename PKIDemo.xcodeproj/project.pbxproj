@@ -24,6 +24,7 @@
 		E1C9BBC11CC480E400ADE365 /* RC4CipherActor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBB21CC480E400ADE365 /* RC4CipherActor.m */; };
 		E1C9BBC21CC480E400ADE365 /* SymCipherActor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBB51CC480E400ADE365 /* SymCipherActor.m */; };
 		E1C9BBC91CC4BA0700ADE365 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBC61CC4BA0700ADE365 /* ViewController.m */; };
+		E1C9BBCC1CC4BAE000ADE365 /* MainEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBCB1CC4BAE000ADE365 /* MainEffectView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		E1C9BBB51CC480E400ADE365 /* SymCipherActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymCipherActor.m; sourceTree = "<group>"; };
 		E1C9BBC51CC4BA0700ADE365 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E1C9BBC61CC4BA0700ADE365 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E1C9BBCA1CC4BAE000ADE365 /* MainEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainEffectView.h; sourceTree = "<group>"; };
+		E1C9BBCB1CC4BAE000ADE365 /* MainEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainEffectView.m; sourceTree = "<group>"; };
 		E1F7A92B1CB7097100FE2183 /* PKIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PKIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -407,6 +410,8 @@
 		E1C9BBC81CC4BA0700ADE365 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1C9BBCA1CC4BAE000ADE365 /* MainEffectView.h */,
+				E1C9BBCB1CC4BAE000ADE365 /* MainEffectView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				E1C9BBB91CC480E400ADE365 /* KeyPairGenerator.m in Sources */,
 				E1C9BBBA1CC480E400ADE365 /* RSACipherActor.m in Sources */,
 				E1C9BB781CC47C7400ADE365 /* AppDelegate.m in Sources */,
+				E1C9BBCC1CC4BAE000ADE365 /* MainEffectView.m in Sources */,
 				E1C9BBC21CC480E400ADE365 /* SymCipherActor.m in Sources */,
 				E1C9BBBF1CC480E400ADE365 /* AESCipherActor.m in Sources */,
 				E1C9BBC91CC4BA0700ADE365 /* ViewController.m in Sources */,
