@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1A0FBDE1CC4C92600B8CDEC /* SymCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A0FBDD1CC4C92600B8CDEC /* SymCipherController.m */; };
+		E1A0FBE11CC4CECB00B8CDEC /* SymCipherDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A0FBE01CC4CECB00B8CDEC /* SymCipherDetailController.m */; };
 		E1C9BB781CC47C7400ADE365 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BB701CC47C7400ADE365 /* AppDelegate.m */; };
 		E1C9BB791CC47C7400ADE365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1C9BB711CC47C7400ADE365 /* Assets.xcassets */; };
 		E1C9BB7A1CC47C7400ADE365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1C9BB721CC47C7400ADE365 /* LaunchScreen.storyboard */; };
@@ -28,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E1A0FBDC1CC4C92600B8CDEC /* SymCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymCipherController.h; sourceTree = "<group>"; };
+		E1A0FBDD1CC4C92600B8CDEC /* SymCipherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymCipherController.m; sourceTree = "<group>"; };
+		E1A0FBDF1CC4CECB00B8CDEC /* SymCipherDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymCipherDetailController.h; sourceTree = "<group>"; };
+		E1A0FBE01CC4CECB00B8CDEC /* SymCipherDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymCipherDetailController.m; sourceTree = "<group>"; };
 		E1C9BB6F1CC47C7400ADE365 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E1C9BB701CC47C7400ADE365 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E1C9BB711CC47C7400ADE365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -363,6 +369,10 @@
 		E1C9BBB61CC480E400ADE365 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E1A0FBDC1CC4C92600B8CDEC /* SymCipherController.h */,
+				E1A0FBDD1CC4C92600B8CDEC /* SymCipherController.m */,
+				E1A0FBDF1CC4CECB00B8CDEC /* SymCipherDetailController.h */,
+				E1A0FBE01CC4CECB00B8CDEC /* SymCipherDetailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -522,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1C9BBC01CC480E400ADE365 /* DESCipherActor.m in Sources */,
+				E1A0FBE11CC4CECB00B8CDEC /* SymCipherDetailController.m in Sources */,
 				E1C9BBB91CC480E400ADE365 /* KeyPairGenerator.m in Sources */,
 				E1C9BBBA1CC480E400ADE365 /* RSACipherActor.m in Sources */,
 				E1C9BB781CC47C7400ADE365 /* AppDelegate.m in Sources */,
@@ -534,6 +545,7 @@
 				E1C9BBC11CC480E400ADE365 /* RC4CipherActor.m in Sources */,
 				E1C9BBBD1CC480E400ADE365 /* SignatureActor.m in Sources */,
 				E1C9BBBE1CC480E400ADE365 /* GTMBase64.m in Sources */,
+				E1A0FBDE1CC4C92600B8CDEC /* SymCipherController.m in Sources */,
 				E1C9BBBB1CC480E400ADE365 /* DigestActor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

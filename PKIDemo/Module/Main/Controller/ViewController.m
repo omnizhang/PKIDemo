@@ -10,9 +10,7 @@
 #import "MainEffectView.h"
 
 #import "KeyPairGenerator.h"
-#import "DESCipherActor.h"
-#import "AESCipherActor.h"
-#import "RC4CipherActor.h"
+
 #import "RSACipherActor.h"
 #import "DigestActor.h"
 #import "PwdCipherActor.h"
@@ -27,7 +25,6 @@
 # pragma mark - LifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
     MainEffectView *mainEffectView = [[MainEffectView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     mainEffectView.delegate = self;
     [self.view addSubview:mainEffectView];
@@ -42,6 +39,10 @@
 //    [self pwdCipherTest];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -49,58 +50,24 @@
 
 - (void)clickButtonTag:(NSInteger)tag inView:(MainEffectView *)view {
     NSLog(@"%i", tag);
+    switch (tag) {
+        case 0:{
+            [self performSegueWithIdentifier:@"SymCipher" sender:nil];
+        }
+        break;
+        case 1:{
+            [self performSegueWithIdentifier:@"AsymCipher" sender:nil];
+        }
+        break;
+        default:
+            break;
+    }
 }
 
-- (void)desTest {
-    DESCipherActor *desCipherActor = [DESCipherActor new];
-    
-    NSString *plainText = @"test SymCipher Demo";
-    NSLog(@"plainText:%@",plainText);
-    
-    NSString *key = @"12345678";
-    Byte iv[] = {0x12, 0x34, 0x56, 0x78, 0x90, 0xab, 0xcd, 0xef};
-    NSData *ivData = [NSData dataWithBytes:iv length:sizeof(iv)];
-    
-    NSString *CBCcipherText = [desCipherActor encryptInCBC:plainText key:key iv:ivData];
-    NSLog(@"cipherText: %@", CBCcipherText);
-    NSString *EBCcipherText = [desCipherActor encryptInEBC:plainText key:key];
-    NSLog(@"cipherText: %@", EBCcipherText);
-    
-    plainText = [desCipherActor decryptInEBC:EBCcipherText key:key];
-    NSLog(@"%@", plainText);
-    plainText = [desCipherActor decryptInCBC:CBCcipherText key:key iv:ivData];
-    NSLog(@"%@", plainText);
+- (void)prepareForSegue:(nonnull UIStoryboardSegue *)segue sender:(nullable id)sender {
+    self.navigationController.navigationBarHidden = NO;
 }
 
-- (void)aesTest {
-    NSString *plainText = @"test SymCipher Demo";
-    NSLog(@"plainText:%@",plainText);
-    NSString *key = @"1234567890123456";//128
-    //key = @"123456789012345678901234";//192
-    //key = @"12345678901234567890123456789012";//256
-    NSLog(@"%lu",(unsigned long)key.length);
-    AESCipherActor *aesCipherActor = [AESCipherActor new];
-    NSString *EBCcipherText = [aesCipherActor encryptInEBC:plainText key:key];
-    NSLog(@"cipherText: %@", EBCcipherText);
-    NSString *CBCcipherText = [aesCipherActor encryptInCBC:plainText key:key iv:[key dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"cipherText: %@", CBCcipherText);
-    plainText = [aesCipherActor decryptInEBC:EBCcipherText key:key];
-    NSLog(@"%@", plainText);
-    plainText = [aesCipherActor decryptInCBC:CBCcipherText key:key iv:[key dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"%@", plainText);
-}
-
-- (void)rc4Test {
-    NSString *plainText = @"test SymCipher Demo";
-    NSLog(@"plainText:%@",plainText);
-    NSString *key = @"12345678901234567890";
-    RC4CipherActor *rc4CipherActor = [RC4CipherActor new];
-    NSString *cipherText = [rc4CipherActor encrypt:plainText key:key];
-    NSLog(@"%@", cipherText);
-    
-    plainText = [rc4CipherActor decrypt:cipherText key:key];
-    NSLog(@"%@", plainText);
-}
 
 - (void)rsaTest {
     RSACipherActor *rsaCipherActor = [[RSACipherActor alloc] init];

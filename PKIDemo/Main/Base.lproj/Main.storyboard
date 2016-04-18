@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2z-Di-pAQ" customClass="MainEffectView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f2z-Di-pAQ" customClass="MainEffectView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -31,11 +31,88 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ib3-7E-yNW"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="TLI-ti-whO" kind="push" identifier="SymCipher" id="bAH-hI-QqT"/>
+                        <segue destination="Wkt-cp-RJ6" kind="push" identifier="AsymCipher" id="uuB-d7-JK3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="705" y="472"/>
+        </scene>
+        <!--对称加密-->
+        <scene sceneID="pVg-xO-GtC">
+            <objects>
+                <viewController id="TLI-ti-whO" customClass="SymCipherController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ss7-9S-8vs"/>
+                        <viewControllerLayoutGuide type="bottom" id="UbN-3X-kg7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2mZ-ld-oY6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CEz-nU-tRE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Func" rowHeight="49" id="hW3-Ky-DKA">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="49"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hW3-Ky-DKA" id="mal-4c-l0X">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HoT-bq-wDD" kind="push" id="8HI-Mg-7gU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="对称加密" id="VN5-Vi-W7P"/>
+                    <connections>
+                        <outlet property="cipherFuncTableView" destination="CEz-nU-tRE" id="4bC-wu-4Ud"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fYN-B1-EDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1569" y="-546"/>
+        </scene>
+        <!--Sym Cipher Detail Controller-->
+        <scene sceneID="2UR-Ek-15E">
+            <objects>
+                <viewController id="HoT-bq-wDD" customClass="SymCipherDetailController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RpH-J9-OsT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gpq-WV-GtE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sq1-7l-4cg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Sin-Ir-39o">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="pos-DC-23H">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="加密"/>
+                                <segment title="解密"/>
+                            </segments>
+                            <connections>
+                                <action selector="selectSymOperation:" destination="HoT-bq-wDD" eventType="valueChanged" id="sxh-XR-Gns"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GQf-e9-nJr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2030" y="-546"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vDh-qK-GxX">
@@ -54,6 +131,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5N-jN-ahq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="304" y="472"/>
+        </scene>
+        <!--非对称加密-->
+        <scene sceneID="oig-0h-ySK">
+            <objects>
+                <viewController id="Wkt-cp-RJ6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mUp-tg-Sfm"/>
+                        <viewControllerLayoutGuide type="bottom" id="2v2-S4-5Uw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kS7-P0-IHn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="34y-xy-zZc">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="49" id="srY-Jr-r4p">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="49"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="srY-Jr-r4p" id="1SA-7i-iJb">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="acq-i2-whN" kind="push" id="ygI-up-3jx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="非对称加密" id="NHg-oQ-FJB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQV-Em-ND2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1569" y="106"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dmw-DM-oSy">
+            <objects>
+                <viewController id="acq-i2-whN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="463-M5-k4M"/>
+                        <viewControllerLayoutGuide type="bottom" id="5BY-3N-NZq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0sW-2Y-WSU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ang-93-1ty">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="6UT-bi-NHg">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="加密"/>
+                                <segment title="解密"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S0N-SR-C29" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2030" y="112"/>
         </scene>
     </scenes>
 </document>
