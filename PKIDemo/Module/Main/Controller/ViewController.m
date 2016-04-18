@@ -23,9 +23,24 @@
 @implementation ViewController
 
 # pragma mark - LifeCycle
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBarHidden = YES;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat padding = screenWidth / 12.0;
+    CGFloat butttonWidth = (screenWidth - 4 * padding) / 3.0;
+    for (int i = 0; i < 6; ++i) {
+        CGRect frame = CGRectMake(padding + (i % 3) * (padding + butttonWidth), 100 + ((int)i / 3) * (butttonWidth + 2 * padding), butttonWidth, butttonWidth);
+        UIButton *button = [[UIButton alloc] initWithFrame:frame];
+        button.backgroundColor = [UIColor whiteColor];
+        button.layer.cornerRadius = button.bounds.size.width / 2.0;
+        [button setTag:i];
+        [button setTitle:@"aa" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+    }
+    
+    
     self.keyPairGenerator = [KeyPairGenerator new];
     [self.keyPairGenerator generateKeyPair];
     //    Do any additional setup after loading the view, typically from a nib.
@@ -35,6 +50,10 @@
 //    [self digestTest];
 //    [self signatureTest];
     [self pwdCipherTest];
+}
+
+- (void)buttonClick:(UIButton *)sender {
+    NSLog(@"%i", sender.tag);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -18,12 +18,12 @@
 		E1C9BBBB1CC480E400ADE365 /* DigestActor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BB8F1CC480E400ADE365 /* DigestActor.m */; };
 		E1C9BBBC1CC480E400ADE365 /* PwdCipherActor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BB9B1CC480E400ADE365 /* PwdCipherActor.m */; };
 		E1C9BBBD1CC480E400ADE365 /* SignatureActor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBA21CC480E400ADE365 /* SignatureActor.m */; };
-		E1C9BBBE1CC480E400ADE365 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBA91CC480E400ADE365 /* GTMBase64.m */; };
+		E1C9BBBE1CC480E400ADE365 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBA91CC480E400ADE365 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E1C9BBBF1CC480E400ADE365 /* AESCipherActor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBAE1CC480E400ADE365 /* AESCipherActor.m */; };
 		E1C9BBC01CC480E400ADE365 /* DESCipherActor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBB01CC480E400ADE365 /* DESCipherActor.m */; };
 		E1C9BBC11CC480E400ADE365 /* RC4CipherActor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBB21CC480E400ADE365 /* RC4CipherActor.m */; };
 		E1C9BBC21CC480E400ADE365 /* SymCipherActor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBB51CC480E400ADE365 /* SymCipherActor.m */; };
-		E1F7A9361CB7097100FE2183 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F7A9351CB7097100FE2183 /* ViewController.m */; };
+		E1C9BBC91CC4BA0700ADE365 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C9BBC61CC4BA0700ADE365 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,9 +55,9 @@
 		E1C9BBB21CC480E400ADE365 /* RC4CipherActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC4CipherActor.m; sourceTree = "<group>"; };
 		E1C9BBB41CC480E400ADE365 /* SymCipherActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymCipherActor.h; sourceTree = "<group>"; };
 		E1C9BBB51CC480E400ADE365 /* SymCipherActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymCipherActor.m; sourceTree = "<group>"; };
+		E1C9BBC51CC4BA0700ADE365 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E1C9BBC61CC4BA0700ADE365 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E1F7A92B1CB7097100FE2183 /* PKIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PKIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1F7A9341CB7097100FE2183 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E1F7A9351CB7097100FE2183 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,13 +88,14 @@
 		E1C9BB821CC480E400ADE365 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				E1C9BB831CC480E400ADE365 /* ASymCipher */,
-				E1C9BB8C1CC480E400ADE365 /* Digest */,
-				E1C9BB931CC480E400ADE365 /* Mac */,
-				E1C9BB981CC480E400ADE365 /* PwdCipher */,
-				E1C9BB9F1CC480E400ADE365 /* Signature */,
-				E1C9BBA61CC480E400ADE365 /* SuperClass */,
+				E1C9BBC31CC4BA0700ADE365 /* Main */,
 				E1C9BBAB1CC480E400ADE365 /* SymCipher */,
+				E1C9BB831CC480E400ADE365 /* ASymCipher */,
+				E1C9BB981CC480E400ADE365 /* PwdCipher */,
+				E1C9BB8C1CC480E400ADE365 /* Digest */,
+				E1C9BB9F1CC480E400ADE365 /* Signature */,
+				E1C9BB931CC480E400ADE365 /* Mac */,
+				E1C9BBA61CC480E400ADE365 /* SuperClass */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -336,13 +337,13 @@
 		E1C9BBAC1CC480E400ADE365 /* Actor */ = {
 			isa = PBXGroup;
 			children = (
+				E1C9BBB31CC480E400ADE365 /* SuperClass */,
 				E1C9BBAD1CC480E400ADE365 /* AESCipherActor.h */,
 				E1C9BBAE1CC480E400ADE365 /* AESCipherActor.m */,
 				E1C9BBAF1CC480E400ADE365 /* DESCipherActor.h */,
 				E1C9BBB01CC480E400ADE365 /* DESCipherActor.m */,
 				E1C9BBB11CC480E400ADE365 /* RC4CipherActor.h */,
 				E1C9BBB21CC480E400ADE365 /* RC4CipherActor.m */,
-				E1C9BBB31CC480E400ADE365 /* SuperClass */,
 			);
 			path = Actor;
 			sourceTree = "<group>";
@@ -377,6 +378,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E1C9BBC31CC4BA0700ADE365 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E1C9BBC41CC4BA0700ADE365 /* Controller */,
+				E1C9BBC71CC4BA0700ADE365 /* Model */,
+				E1C9BBC81CC4BA0700ADE365 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E1C9BBC41CC4BA0700ADE365 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1C9BBC51CC4BA0700ADE365 /* ViewController.h */,
+				E1C9BBC61CC4BA0700ADE365 /* ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E1C9BBC71CC4BA0700ADE365 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1C9BBC81CC4BA0700ADE365 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E1F7A9221CB7097100FE2183 = {
 			isa = PBXGroup;
 			children = (
@@ -396,8 +430,6 @@
 		E1F7A92D1CB7097100FE2183 /* PKIDemo */ = {
 			isa = PBXGroup;
 			children = (
-				E1F7A9341CB7097100FE2183 /* ViewController.h */,
-				E1F7A9351CB7097100FE2183 /* ViewController.m */,
 				E1C9BB6E1CC47C7400ADE365 /* Main */,
 				E1C9BB821CC480E400ADE365 /* Module */,
 				E1F7A92E1CB7097100FE2183 /* Supporting Files */,
@@ -484,13 +516,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1F7A9361CB7097100FE2183 /* ViewController.m in Sources */,
 				E1C9BBC01CC480E400ADE365 /* DESCipherActor.m in Sources */,
 				E1C9BBB91CC480E400ADE365 /* KeyPairGenerator.m in Sources */,
 				E1C9BBBA1CC480E400ADE365 /* RSACipherActor.m in Sources */,
 				E1C9BB781CC47C7400ADE365 /* AppDelegate.m in Sources */,
 				E1C9BBC21CC480E400ADE365 /* SymCipherActor.m in Sources */,
 				E1C9BBBF1CC480E400ADE365 /* AESCipherActor.m in Sources */,
+				E1C9BBC91CC4BA0700ADE365 /* ViewController.m in Sources */,
 				E1C9BBBC1CC480E400ADE365 /* PwdCipherActor.m in Sources */,
 				E1C9BB7D1CC47C7500ADE365 /* main.m in Sources */,
 				E1C9BBC11CC480E400ADE365 /* RC4CipherActor.m in Sources */,
