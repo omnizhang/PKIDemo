@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SymCipherDetailController : UIViewController
-
+@property (nonatomic) NSInteger funClass;
 @end

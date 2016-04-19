@@ -7,10 +7,12 @@
 //
 
 #import "SymCipherController.h"
+#import "SymCipherDetailController.h"
 
 @interface SymCipherController() <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *cipherFuncTableView;
 @property (strong, nonatomic) NSArray *funcArray;
+@property (nonatomic) NSInteger selectedIndex;
 @end
 
 @implementation SymCipherController
@@ -28,7 +30,8 @@
 }
 
 - (void)prepareForSegue:(nonnull UIStoryboardSegue *)segue sender:(nullable id)sender {
-    
+    ((SymCipherDetailController *)segue.destinationViewController).funClass = self.selectedIndex;
+    ((SymCipherDetailController *)segue.destinationViewController).title = self.funcArray[self.selectedIndex];
 }
 
 # pragma mark - UITableViewDataSource
@@ -45,5 +48,11 @@
     NSString *funcName = self.funcArray[indexPath.row];
     cell.textLabel.text = funcName;
     return cell;
+}
+
+# pragma mark - UITableViewDelegate
+- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    self.selectedIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"SymCipher" sender:nil];
 }
 @end
