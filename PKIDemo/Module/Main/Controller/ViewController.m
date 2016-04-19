@@ -8,10 +8,9 @@
 
 #import "ViewController.h"
 #import "MainEffectView.h"
-
+#import "KeyPairDispatchController.h"
 #import "KeyPairGenerator.h"
 
-#import "RSACipherActor.h"
 #import "DigestActor.h"
 #import "PwdCipherActor.h"
 #import "SignatureActor.h"
@@ -56,7 +55,7 @@
         }
         break;
         case 1:{
-            [self performSegueWithIdentifier:@"AsymCipher" sender:nil];
+            [self performSegueWithIdentifier:@"Dispatch" sender:nil];
         }
         break;
         default:
@@ -66,19 +65,13 @@
 
 - (void)prepareForSegue:(nonnull UIStoryboardSegue *)segue sender:(nullable id)sender {
     self.navigationController.navigationBarHidden = NO;
+    if ([segue.identifier isEqualToString:@"Dispatch"]) {
+        ((KeyPairDispatchController *)segue.destinationViewController).segueIdentifier = @"AsymCipher";
+    }
 }
 
 
-- (void)rsaTest {
-    RSACipherActor *rsaCipherActor = [[RSACipherActor alloc] init];
-    NSString *plainString = @"testteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestteestssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasadasdqwdqwfqwascasdaksjflkajglkjdlkasghiejrdlkwfnl";
-    SecKeyRef publicKey = [self.keyPairGenerator getPublicKeyFromKeyChain];
-    NSString *cipherString = [rsaCipherActor encrypt:plainString withPublicKey:publicKey];
-    NSLog(@"cipherText: %@", cipherString);
-    SecKeyRef privateKey = [self.keyPairGenerator getPrivateKeyFromKeyChain];
-    plainString = [rsaCipherActor decrypt:cipherString withPrivateKey:privateKey];
-    NSLog(@"plainText: %@", plainString);
-}
+
 
 - (void)digestTest {
     DigestActor *digestActor = [DigestActor new];
