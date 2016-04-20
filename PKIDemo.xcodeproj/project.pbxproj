@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0C9C3611CC7304000E18CF7 /* PwdCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */; settings = {ASSET_TAGS = (); }; };
 		E14C3E661CC607A10037EB83 /* AsymCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E651CC607A10037EB83 /* AsymCipherController.m */; };
 		E14C3E691CC6087A0037EB83 /* AsymCipherDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E681CC6087A0037EB83 /* AsymCipherDetailController.m */; };
 		E14C3E6C1CC61AE10037EB83 /* KeyPairDispatchController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E6B1CC61AE10037EB83 /* KeyPairDispatchController.m */; };
@@ -33,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0C9C35F1CC7304000E18CF7 /* PwdCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwdCipherController.h; sourceTree = "<group>"; };
+		C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwdCipherController.m; sourceTree = "<group>"; };
 		E14C3E641CC607A10037EB83 /* AsymCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsymCipherController.h; sourceTree = "<group>"; };
 		E14C3E651CC607A10037EB83 /* AsymCipherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsymCipherController.m; sourceTree = "<group>"; };
 		E14C3E671CC6087A0037EB83 /* AsymCipherDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsymCipherDetailController.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 		E1C9BB9C1CC480E400ADE365 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C0C9C35F1CC7304000E18CF7 /* PwdCipherController.h */,
+				C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 			files = (
 				E1C9BBC01CC480E400ADE365 /* DESCipherActor.m in Sources */,
 				E1A0FBE11CC4CECB00B8CDEC /* SymCipherDetailController.m in Sources */,
+				C0C9C3611CC7304000E18CF7 /* PwdCipherController.m in Sources */,
 				E1C9BBB91CC480E400ADE365 /* KeyPairGenerator.m in Sources */,
 				E14C3E661CC607A10037EB83 /* AsymCipherController.m in Sources */,
 				E1C9BBBA1CC480E400ADE365 /* RSACipherActor.m in Sources */,

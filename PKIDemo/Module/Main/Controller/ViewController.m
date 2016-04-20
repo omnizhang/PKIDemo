@@ -48,14 +48,24 @@
 }
 
 - (void)clickButtonTag:(NSInteger)tag inView:(MainEffectView *)view {
-    NSLog(@"%i", tag);
     switch (tag) {
         case 0:{
             [self performSegueWithIdentifier:@"SymCipher" sender:nil];
         }
         break;
-        case 1:{
+        case 1:
+        case 4:
+        case 5:
+        {
             [self performSegueWithIdentifier:@"Dispatch" sender:nil];
+        }
+        break;
+        case 2:{
+//            [self performSegueWithIdentifier:@"PwdCipher" sender:nil];
+        }
+            break;
+        case 3:{
+            [self performSegueWithIdentifier:@"PwdCipher" sender:nil];
         }
         break;
         default:
@@ -93,22 +103,5 @@
     NSLog(@"verifyResult: %@",verifyResult?@"YES":@"NO");
 }
 
-- (void)pwdCipherTest {
-    PwdCipherActor *pwdCipherActor = [PwdCipherActor new];
-    NSString *plainText = @"test Pwd";
-    static const char gSalt[] =
-    {
-        (unsigned char)0xAA, (unsigned char)0xAA, (unsigned char)0xAA, (unsigned char)0xAA,
-        (unsigned char)0xAA, (unsigned char)0xAA, (unsigned char)0xAA, (unsigned char)0xAA
-    };
-    NSData *salt = [NSData dataWithBytes:gSalt length:sizeof(gSalt)/sizeof(gSalt[0])];
-    NSData *key = [pwdCipherActor generateKeyWithPassword:@"12345678" andSalt:salt andIterating:16];
-    
-    NSString *cipherText = [pwdCipherActor DESEncrypt:plainText withPwdKey:key];
-    NSLog(@"cipherText: %@", cipherText);
-    
-    plainText = [pwdCipherActor DESDecrypt:cipherText withPwdKey:key];
-    NSLog(@"%@", plainText);
-}
 
 @end
