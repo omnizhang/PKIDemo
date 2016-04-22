@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C09325441CC9B5E400476928 /* DigestController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09325431CC9B5E400476928 /* DigestController.m */; settings = {ASSET_TAGS = (); }; };
 		C0C9C3611CC7304000E18CF7 /* PwdCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */; settings = {ASSET_TAGS = (); }; };
 		E14C3E661CC607A10037EB83 /* AsymCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E651CC607A10037EB83 /* AsymCipherController.m */; };
 		E14C3E691CC6087A0037EB83 /* AsymCipherDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E681CC6087A0037EB83 /* AsymCipherDetailController.m */; };
@@ -34,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C09325421CC9B5E400476928 /* DigestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigestController.h; sourceTree = "<group>"; };
+		C09325431CC9B5E400476928 /* DigestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigestController.m; sourceTree = "<group>"; };
 		C0C9C35F1CC7304000E18CF7 /* PwdCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwdCipherController.h; sourceTree = "<group>"; };
 		C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwdCipherController.m; sourceTree = "<group>"; };
 		E14C3E641CC607A10037EB83 /* AsymCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsymCipherController.h; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 		E1C9BB901CC480E400ADE365 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C09325421CC9B5E400476928 /* DigestController.h */,
+				C09325431CC9B5E400476928 /* DigestController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 				E1C9BBBF1CC480E400ADE365 /* AESCipherActor.m in Sources */,
 				E1C9BBC91CC4BA0700ADE365 /* ViewController.m in Sources */,
 				E1C9BBBC1CC480E400ADE365 /* PwdCipherActor.m in Sources */,
+				C09325441CC9B5E400476928 /* DigestController.m in Sources */,
 				E1C9BB7D1CC47C7500ADE365 /* main.m in Sources */,
 				E1C9BBC11CC480E400ADE365 /* RC4CipherActor.m in Sources */,
 				E1C9BBBD1CC480E400ADE365 /* SignatureActor.m in Sources */,

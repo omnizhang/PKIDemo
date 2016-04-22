@@ -17,6 +17,8 @@
 
 @interface ViewController () <MainEffectViewDelegate>
 @property (strong, nonatomic) KeyPairGenerator *keyPairGenerator;
+
+@property (nonatomic) NSInteger buttonTag;
 @end
 
 @implementation ViewController
@@ -29,13 +31,6 @@
     [self.view addSubview:mainEffectView];
     self.keyPairGenerator = [KeyPairGenerator new];
     [self.keyPairGenerator generateKeyPair];
-    //    Do any additional setup after loading the view, typically from a nib.
-//    [self desTest];
-//    [self rc4Test];
-//    [self rsaTest];
-//    [self digestTest];
-//    [self signatureTest];
-//    [self pwdCipherTest];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,6 +43,7 @@
 }
 
 - (void)clickButtonTag:(NSInteger)tag inView:(MainEffectView *)view {
+    self.buttonTag = tag;
     switch (tag) {
         case 0:{
             [self performSegueWithIdentifier:@"SymCipher" sender:nil];
@@ -63,7 +59,7 @@
         case 2:{
 //            [self performSegueWithIdentifier:@"PwdCipher" sender:nil];
         }
-            break;
+        break;
         case 3:{
             [self performSegueWithIdentifier:@"PwdCipher" sender:nil];
         }
@@ -76,18 +72,22 @@
 - (void)prepareForSegue:(nonnull UIStoryboardSegue *)segue sender:(nullable id)sender {
     self.navigationController.navigationBarHidden = NO;
     if ([segue.identifier isEqualToString:@"Dispatch"]) {
-        ((KeyPairDispatchController *)segue.destinationViewController).segueIdentifier = @"AsymCipher";
+        NSString *identifier = nil;
+        switch (self.buttonTag) {
+            case 1:
+                identifier = @"AsymCipher";
+                break;
+            case 4:
+                identifier = @"Digest";
+                break;
+            case 5:
+                identifier = @"Signature";
+                break;
+            default:
+                break;
+        }
+        ((KeyPairDispatchController *)segue.destinationViewController).segueIdentifier = identifier;
     }
-}
-
-
-
-
-- (void)digestTest {
-    DigestActor *digestActor = [DigestActor new];
-    NSString *stringToDigest = @"test Digest";
-    NSString *result = [digestActor stringByMD5Digest:stringToDigest];
-    NSLog(@"result: %@", result);
 }
 
 - (void)signatureTest {
