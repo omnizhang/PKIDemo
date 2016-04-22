@@ -650,7 +650,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rrv-jU-pYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2785" y="734"/>
+            <point key="canvasLocation" x="2754" y="734"/>
         </scene>
         <!--Signature Controller-->
         <scene sceneID="Gxc-A4-EJd">
