@@ -60,7 +60,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"密钥为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return NO;
-    } else return NO;
+    } else return YES;
 }
 
 - (void)rsaTest {
