@@ -12,7 +12,6 @@
 
 @interface AsymCipherDetailController()
 @property (weak, nonatomic) IBOutlet UITextView *plainTextView;
-@property (weak, nonatomic) IBOutlet UITextField *keyTextField;
 @property (weak, nonatomic) IBOutlet UITextView *cipherTextView;
 
 @property (strong, nonatomic) KeyPairGenerator *keyPairGenerator;
@@ -53,11 +52,6 @@
     if (textView.text == nil || [textView.text isEqualToString:@""]) {
         [textView becomeFirstResponder];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"明文或密文内容为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        return NO;
-    } else if (self.keyTextField.text == nil || [self.keyTextField.text isEqualToString:@""]){
-        [self.keyTextField becomeFirstResponder];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"密钥为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return NO;
     } else return YES;
