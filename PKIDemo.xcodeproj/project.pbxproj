@@ -10,6 +10,8 @@
 		C09325441CC9B5E400476928 /* DigestController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09325431CC9B5E400476928 /* DigestController.m */; settings = {ASSET_TAGS = (); }; };
 		C09325471CC9BA2B00476928 /* SignatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09325461CC9BA2B00476928 /* SignatureController.m */; settings = {ASSET_TAGS = (); }; };
 		C093254B1CC9C57400476928 /* SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C093254A1CC9C57400476928 /* SuperViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C09325521CCA024300476928 /* HMacActor.m in Sources */ = {isa = PBXBuildFile; fileRef = C09325511CCA024300476928 /* HMacActor.m */; settings = {ASSET_TAGS = (); }; };
+		C09325551CCA05F500476928 /* HMacController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09325541CCA05F500476928 /* HMacController.m */; settings = {ASSET_TAGS = (); }; };
 		C0C9C3611CC7304000E18CF7 /* PwdCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */; settings = {ASSET_TAGS = (); }; };
 		E14C3E661CC607A10037EB83 /* AsymCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E651CC607A10037EB83 /* AsymCipherController.m */; };
 		E14C3E691CC6087A0037EB83 /* AsymCipherDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E681CC6087A0037EB83 /* AsymCipherDetailController.m */; };
@@ -43,6 +45,10 @@
 		C09325461CC9BA2B00476928 /* SignatureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureController.m; sourceTree = "<group>"; };
 		C09325491CC9C57400476928 /* SuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperViewController.h; sourceTree = "<group>"; };
 		C093254A1CC9C57400476928 /* SuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperViewController.m; sourceTree = "<group>"; };
+		C09325501CCA024300476928 /* HMacActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMacActor.h; sourceTree = "<group>"; };
+		C09325511CCA024300476928 /* HMacActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMacActor.m; sourceTree = "<group>"; };
+		C09325531CCA05F500476928 /* HMacController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMacController.h; sourceTree = "<group>"; };
+		C09325541CCA05F500476928 /* HMacController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMacController.m; sourceTree = "<group>"; };
 		C0C9C35F1CC7304000E18CF7 /* PwdCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwdCipherController.h; sourceTree = "<group>"; };
 		C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwdCipherController.m; sourceTree = "<group>"; };
 		E14C3E641CC607A10037EB83 /* AsymCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsymCipherController.h; sourceTree = "<group>"; };
@@ -108,6 +114,15 @@
 				C093254A1CC9C57400476928 /* SuperViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		C093254F1CCA024300476928 /* Actor */ = {
+			isa = PBXGroup;
+			children = (
+				C09325501CCA024300476928 /* HMacActor.h */,
+				C09325511CCA024300476928 /* HMacActor.m */,
+			);
+			path = Actor;
 			sourceTree = "<group>";
 		};
 		E1C9BB6E1CC47C7400ADE365 /* Main */ = {
@@ -232,7 +247,7 @@
 		E1C9BB931CC480E400ADE365 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
-				E1C9BB941CC480E400ADE365 /* Actor */,
+				C093254F1CCA024300476928 /* Actor */,
 				E1C9BB951CC480E400ADE365 /* Controller */,
 				E1C9BB961CC480E400ADE365 /* Model */,
 				E1C9BB971CC480E400ADE365 /* View */,
@@ -240,16 +255,11 @@
 			path = Mac;
 			sourceTree = "<group>";
 		};
-		E1C9BB941CC480E400ADE365 /* Actor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actor;
-			sourceTree = "<group>";
-		};
 		E1C9BB951CC480E400ADE365 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C09325531CCA05F500476928 /* HMacController.h */,
+				C09325541CCA05F500476928 /* HMacController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -576,6 +586,7 @@
 			files = (
 				C093254B1CC9C57400476928 /* SuperViewController.m in Sources */,
 				E1C9BBC01CC480E400ADE365 /* DESCipherActor.m in Sources */,
+				C09325551CCA05F500476928 /* HMacController.m in Sources */,
 				E1A0FBE11CC4CECB00B8CDEC /* SymCipherDetailController.m in Sources */,
 				C0C9C3611CC7304000E18CF7 /* PwdCipherController.m in Sources */,
 				E1C9BBB91CC480E400ADE365 /* KeyPairGenerator.m in Sources */,
@@ -590,6 +601,7 @@
 				E1C9BBBF1CC480E400ADE365 /* AESCipherActor.m in Sources */,
 				E1C9BBC91CC4BA0700ADE365 /* ViewController.m in Sources */,
 				E1C9BBBC1CC480E400ADE365 /* PwdCipherActor.m in Sources */,
+				C09325521CCA024300476928 /* HMacActor.m in Sources */,
 				C09325441CC9B5E400476928 /* DigestController.m in Sources */,
 				E1C9BB7D1CC47C7500ADE365 /* main.m in Sources */,
 				E1C9BBC11CC480E400ADE365 /* RC4CipherActor.m in Sources */,

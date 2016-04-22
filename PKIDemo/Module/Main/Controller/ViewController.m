@@ -11,9 +11,7 @@
 #import "KeyPairDispatchController.h"
 #import "KeyPairGenerator.h"
 
-#import "DigestActor.h"
-#import "PwdCipherActor.h"
-#import "SignatureActor.h"
+#import "HMacActor.h"
 
 @interface ViewController () <MainEffectViewDelegate>
 @property (nonatomic) NSInteger buttonTag;
@@ -53,7 +51,7 @@
         }
         break;
         case 2:{
-//            [self performSegueWithIdentifier:@"PwdCipher" sender:nil];
+            [self performSegueWithIdentifier:@"HMac" sender:nil];
         }
         break;
         case 3:{
