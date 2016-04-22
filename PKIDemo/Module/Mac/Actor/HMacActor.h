@@ -10,4 +10,7 @@
 
 @interface HMacActor : NSObject
 
+- (NSString *)HMacSHA1WithKey:(NSString *)key data:(NSString *)data;
+- (NSString *)HMacMD5WithKey:(NSString *)key data:(NSString *)data;
+
 @end
