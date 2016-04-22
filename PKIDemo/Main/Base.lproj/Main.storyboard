@@ -652,10 +652,10 @@
             </objects>
             <point key="canvasLocation" x="2785" y="734"/>
         </scene>
-        <!--View Controller-->
+        <!--Signature Controller-->
         <scene sceneID="Gxc-A4-EJd">
             <objects>
-                <viewController id="kJW-SM-cKn" sceneMemberID="viewController">
+                <viewController id="kJW-SM-cKn" customClass="SignatureController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L9l-6J-Dch"/>
                         <viewControllerLayoutGuide type="bottom" id="5P2-Fp-9KW"/>
@@ -674,21 +674,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密文：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPy-f8-qHH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="签名：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPy-f8-qHH">
                                 <rect key="frame" x="16" y="340" width="56" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i36-Ua-Uv2" userLabel="CipherText">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i36-Ua-Uv2" userLabel="CipherText">
                                 <rect key="frame" x="80" y="333" width="228" height="206"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Dq-tk-tqh" userLabel="PlainText">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Dq-tk-tqh" userLabel="PlainText">
                                 <rect key="frame" x="80" y="72" width="228" height="206"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -696,12 +696,15 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifZ-3O-BhM">
-                                <rect key="frame" x="16" y="286" width="292" height="39"/>
+                                <rect key="frame" x="16" y="286" width="284" height="39"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.53100990650000002" green="0.69797498560000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="生成签名">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="generateSignature:" destination="kJW-SM-cKn" eventType="touchUpInside" id="oS4-1D-xRj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -711,7 +714,7 @@
                             <constraint firstItem="GPy-f8-qHH" firstAttribute="leading" secondItem="3rG-YK-noS" secondAttribute="leadingMargin" id="68l-dE-6T3"/>
                             <constraint firstItem="GPy-f8-qHH" firstAttribute="leading" secondItem="ifZ-3O-BhM" secondAttribute="leading" id="8aG-m4-aO1"/>
                             <constraint firstItem="4Dq-tk-tqh" firstAttribute="top" secondItem="L9l-6J-Dch" secondAttribute="bottom" constant="8" symbolic="YES" id="BIK-w0-sjg"/>
-                            <constraint firstItem="ifZ-3O-BhM" firstAttribute="top" secondItem="4Dq-tk-tqh" secondAttribute="bottom" constant="17" id="CmH-tf-vFQ"/>
+                            <constraint firstItem="ifZ-3O-BhM" firstAttribute="top" secondItem="4Dq-tk-tqh" secondAttribute="bottom" constant="8" id="CmH-tf-vFQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Dq-tk-tqh" secondAttribute="trailing" constant="-4" id="DP9-B3-atm"/>
                             <constraint firstItem="ifZ-3O-BhM" firstAttribute="leading" secondItem="34Z-p2-eKD" secondAttribute="leading" id="DTl-WA-of8"/>
                             <constraint firstItem="5P2-Fp-9KW" firstAttribute="top" secondItem="i36-Ua-Uv2" secondAttribute="bottom" constant="29" id="FU6-Tc-rap"/>
@@ -723,13 +726,17 @@
                             <constraint firstItem="i36-Ua-Uv2" firstAttribute="top" secondItem="ifZ-3O-BhM" secondAttribute="bottom" constant="8" symbolic="YES" id="eCR-Ym-lqM"/>
                             <constraint firstItem="4Dq-tk-tqh" firstAttribute="trailing" secondItem="i36-Ua-Uv2" secondAttribute="trailing" id="gBP-43-aiB"/>
                             <constraint firstItem="GPy-f8-qHH" firstAttribute="top" secondItem="ifZ-3O-BhM" secondAttribute="bottom" constant="15" id="hZx-ih-bDW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ifZ-3O-BhM" secondAttribute="trailing" constant="-8" id="kQi-2Z-Vz6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ifZ-3O-BhM" secondAttribute="trailing" id="kQi-2Z-Vz6"/>
                             <constraint firstItem="GPy-f8-qHH" firstAttribute="width" secondItem="34Z-p2-eKD" secondAttribute="width" id="z8z-ur-CNR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="srz-rb-6vk">
                         <nil key="title"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="plainTextView" destination="4Dq-tk-tqh" id="YcB-Pk-zdP"/>
+                        <outlet property="signatureTextView" destination="i36-Ua-Uv2" id="Mkc-z0-xRc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZX5-Cj-s7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

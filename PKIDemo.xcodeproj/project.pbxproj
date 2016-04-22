@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C09325441CC9B5E400476928 /* DigestController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09325431CC9B5E400476928 /* DigestController.m */; settings = {ASSET_TAGS = (); }; };
+		C09325471CC9BA2B00476928 /* SignatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09325461CC9BA2B00476928 /* SignatureController.m */; settings = {ASSET_TAGS = (); }; };
 		C0C9C3611CC7304000E18CF7 /* PwdCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */; settings = {ASSET_TAGS = (); }; };
 		E14C3E661CC607A10037EB83 /* AsymCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E651CC607A10037EB83 /* AsymCipherController.m */; };
 		E14C3E691CC6087A0037EB83 /* AsymCipherDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E681CC6087A0037EB83 /* AsymCipherDetailController.m */; };
@@ -37,6 +38,8 @@
 /* Begin PBXFileReference section */
 		C09325421CC9B5E400476928 /* DigestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigestController.h; sourceTree = "<group>"; };
 		C09325431CC9B5E400476928 /* DigestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigestController.m; sourceTree = "<group>"; };
+		C09325451CC9BA2B00476928 /* SignatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureController.h; sourceTree = "<group>"; };
+		C09325461CC9BA2B00476928 /* SignatureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureController.m; sourceTree = "<group>"; };
 		C0C9C35F1CC7304000E18CF7 /* PwdCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwdCipherController.h; sourceTree = "<group>"; };
 		C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwdCipherController.m; sourceTree = "<group>"; };
 		E14C3E641CC607A10037EB83 /* AsymCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsymCipherController.h; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 		E1C9BBA31CC480E400ADE365 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C09325451CC9BA2B00476928 /* SignatureController.h */,
+				C09325461CC9BA2B00476928 /* SignatureController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 				E1A0FBE11CC4CECB00B8CDEC /* SymCipherDetailController.m in Sources */,
 				C0C9C3611CC7304000E18CF7 /* PwdCipherController.m in Sources */,
 				E1C9BBB91CC480E400ADE365 /* KeyPairGenerator.m in Sources */,
+				C09325471CC9BA2B00476928 /* SignatureController.m in Sources */,
 				E14C3E661CC607A10037EB83 /* AsymCipherController.m in Sources */,
 				E1C9BBBA1CC480E400ADE365 /* RSACipherActor.m in Sources */,
 				E14C3E691CC6087A0037EB83 /* AsymCipherDetailController.m in Sources */,

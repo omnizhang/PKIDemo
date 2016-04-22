@@ -90,18 +90,6 @@
     }
 }
 
-- (void)signatureTest {
-    SignatureActor *signatureActor = [SignatureActor new];
-    NSString *stringToSig = @"test Signature";
-    //签名
-    SecKeyRef privateKey = [self.keyPairGenerator getPrivateKeyFromKeyChain];
-    NSString *signature = [signatureActor generateSignatureUsingPlainText:stringToSig withPrivateKey:privateKey];
-    NSLog(@"result: %@", signature);
-    //验证签名
-    SecKeyRef publicKey = [self.keyPairGenerator getPublicKeyFromKeyChain];
-    BOOL verifyResult = [signatureActor verifySignature:signature withPlainText:stringToSig withPublicKey:publicKey];
-    NSLog(@"verifyResult: %@",verifyResult?@"YES":@"NO");
-}
 
 
 @end
