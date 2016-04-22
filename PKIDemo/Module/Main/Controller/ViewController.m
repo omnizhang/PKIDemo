@@ -16,8 +16,6 @@
 #import "SignatureActor.h"
 
 @interface ViewController () <MainEffectViewDelegate>
-@property (strong, nonatomic) KeyPairGenerator *keyPairGenerator;
-
 @property (nonatomic) NSInteger buttonTag;
 @end
 
@@ -29,8 +27,6 @@
     MainEffectView *mainEffectView = [[MainEffectView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     mainEffectView.delegate = self;
     [self.view addSubview:mainEffectView];
-    self.keyPairGenerator = [KeyPairGenerator new];
-    [self.keyPairGenerator generateKeyPair];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

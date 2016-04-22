@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SuperViewController.h"
 
-@interface PwdCipherController : UIViewController
+@interface PwdCipherController : SuperViewController
 
 @end

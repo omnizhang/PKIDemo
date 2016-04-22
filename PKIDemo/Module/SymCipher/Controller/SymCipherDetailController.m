@@ -11,7 +11,7 @@
 #import "AESCipherActor.h"
 #import "RC4CipherActor.h"
 
-@interface SymCipherDetailController()
+@interface SymCipherDetailController() <UITextViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *plainTextView;
 @property (weak, nonatomic) IBOutlet UITextField *keyTextField;
 @property (weak, nonatomic) IBOutlet UITextView *cipherTextView;
@@ -20,16 +20,22 @@
 @implementation SymCipherDetailController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    UIGestureRecognizer *tapGusture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagTheBackground)];
+    [self.view addGestureRecognizer:tapGusture];
     self.plainTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.plainTextView.layer.borderWidth = 1;
     self.plainTextView.layer.cornerRadius = 5;
+    self.plainTextView.delegate = self;
     self.cipherTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.cipherTextView.layer.borderWidth = 1;
     self.cipherTextView.layer.cornerRadius = 5;
+    self.cipherTextView.delegate = self;
+    self.keyTextField.delegate = self;
 }
 
 - (IBAction)encrypt:(id)sender {
-    if ([self canDoCrypt:self.plainTextView]) {
+    if ([self canDoCrypt:self.plainTextView textField:self.keyTextField]) {
         switch (self.funClass) {
             case 0:
             {
@@ -66,7 +72,7 @@
 }
 
 - (IBAction)decrypt:(id)sender {
-    if ([self canDoCrypt:self.cipherTextView]) {
+    if ([self canDoCrypt:self.cipherTextView textField:self.keyTextField]) {
         switch (self.funClass) {
             case 0:
             {
@@ -101,18 +107,10 @@
     }
 }
 
-- (BOOL)canDoCrypt:(UITextView *)textView {
-    if (textView.text == nil || [textView.text isEqualToString:@""]) {
-        [textView becomeFirstResponder];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"明文或密文内容为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        return NO;
-    } else if (self.keyTextField.text == nil || [self.keyTextField.text isEqualToString:@""]){
-        [self.keyTextField becomeFirstResponder];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"密钥为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        return NO;
-    } else return YES;
+- (void)tagTheBackground {
+    [self.plainTextView resignFirstResponder];
+    [self.cipherTextView resignFirstResponder];
+    [self.keyTextField resignFirstResponder];
 }
 
 - (void)desTest {

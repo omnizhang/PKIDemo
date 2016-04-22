@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SuperViewController.h"
 
-@interface SignatureController : UIViewController
+@interface SignatureController : SuperViewController
 
 @end

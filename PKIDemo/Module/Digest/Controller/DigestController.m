@@ -9,7 +9,7 @@
 #import "DigestController.h"
 #import "DigestActor.h"
 
-@interface DigestController ()
+@interface DigestController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *plainTextView;
 @property (weak, nonatomic) IBOutlet UITextView *digestTextView;
 @end
@@ -18,13 +18,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    UIGestureRecognizer *tapGusture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagTheBackground)];
+    [self.view addGestureRecognizer:tapGusture];
     self.plainTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.plainTextView.layer.borderWidth = 1;
     self.plainTextView.layer.cornerRadius = 5;
+    self.plainTextView.delegate = self;
     self.digestTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.digestTextView.layer.borderWidth = 1;
     self.digestTextView.layer.cornerRadius = 5;
+    self.digestTextView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,13 +44,9 @@
     }
 }
 
-- (BOOL)canDoCrypt:(UITextView *)textView {
-    if (textView.text == nil || [textView.text isEqualToString:@""]) {
-        [textView becomeFirstResponder];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"明文或密文内容为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        return NO;
-    } else return YES;
+- (void)tagTheBackground {
+    [self.plainTextView resignFirstResponder];
+    [self.digestTextView resignFirstResponder];
 }
 
 - (void)digestTest {
@@ -56,15 +55,4 @@
     NSString *result = [digestActor stringByMD5Digest:stringToDigest];
     NSLog(@"result: %@", result);
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

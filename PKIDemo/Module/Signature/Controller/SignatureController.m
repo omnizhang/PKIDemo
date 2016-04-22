@@ -10,7 +10,7 @@
 #import "SignatureActor.h"
 #import "KeyPairGenerator.h"
 
-@interface SignatureController ()
+@interface SignatureController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *plainTextView;
 @property (weak, nonatomic) IBOutlet UITextView *signatureTextView;
 @end
@@ -19,12 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIGestureRecognizer *tapGusture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagTheBackground)];
+    [self.view addGestureRecognizer:tapGusture];
     self.plainTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.plainTextView.layer.borderWidth = 1;
     self.plainTextView.layer.cornerRadius = 5;
+    self.plainTextView.delegate = self;
     self.signatureTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.signatureTextView.layer.borderWidth = 1;
     self.signatureTextView.layer.cornerRadius = 5;
+    self.signatureTextView.delegate = self;
 }
 
 - (IBAction)generateSignature:(id)sender {
@@ -38,15 +42,10 @@
     }
 }
 
-- (BOOL)canDoCrypt:(UITextView *)textView {
-    if (textView.text == nil || [textView.text isEqualToString:@""]) {
-        [textView becomeFirstResponder];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"明文或密文内容为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        return NO;
-    } else return YES;
+- (void)tagTheBackground {
+    [self.plainTextView resignFirstResponder];
+    [self.signatureTextView resignFirstResponder];
 }
-
 
 - (void)signatureTest {
     SignatureActor *signatureActor = [SignatureActor new];

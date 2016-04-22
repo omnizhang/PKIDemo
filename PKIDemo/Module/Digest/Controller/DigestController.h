@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SuperViewController.h"
 
-@interface DigestController : UIViewController
+@interface DigestController : SuperViewController
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SuperViewController.h"
 
-@interface AsymCipherDetailController : UIViewController
+@interface AsymCipherDetailController : SuperViewController
 @property (nonatomic) NSInteger funClass;
 @end

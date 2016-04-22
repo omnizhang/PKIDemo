@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C09325441CC9B5E400476928 /* DigestController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09325431CC9B5E400476928 /* DigestController.m */; settings = {ASSET_TAGS = (); }; };
 		C09325471CC9BA2B00476928 /* SignatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09325461CC9BA2B00476928 /* SignatureController.m */; settings = {ASSET_TAGS = (); }; };
+		C093254B1CC9C57400476928 /* SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C093254A1CC9C57400476928 /* SuperViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C0C9C3611CC7304000E18CF7 /* PwdCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */; settings = {ASSET_TAGS = (); }; };
 		E14C3E661CC607A10037EB83 /* AsymCipherController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E651CC607A10037EB83 /* AsymCipherController.m */; };
 		E14C3E691CC6087A0037EB83 /* AsymCipherDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C3E681CC6087A0037EB83 /* AsymCipherDetailController.m */; };
@@ -40,6 +41,8 @@
 		C09325431CC9B5E400476928 /* DigestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigestController.m; sourceTree = "<group>"; };
 		C09325451CC9BA2B00476928 /* SignatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureController.h; sourceTree = "<group>"; };
 		C09325461CC9BA2B00476928 /* SignatureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureController.m; sourceTree = "<group>"; };
+		C09325491CC9C57400476928 /* SuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperViewController.h; sourceTree = "<group>"; };
+		C093254A1CC9C57400476928 /* SuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperViewController.m; sourceTree = "<group>"; };
 		C0C9C35F1CC7304000E18CF7 /* PwdCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwdCipherController.h; sourceTree = "<group>"; };
 		C0C9C3601CC7304000E18CF7 /* PwdCipherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwdCipherController.m; sourceTree = "<group>"; };
 		E14C3E641CC607A10037EB83 /* AsymCipherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsymCipherController.h; sourceTree = "<group>"; };
@@ -98,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C09325481CC9C56700476928 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C09325491CC9C57400476928 /* SuperViewController.h */,
+				C093254A1CC9C57400476928 /* SuperViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E1C9BB6E1CC47C7400ADE365 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +357,7 @@
 		E1C9BBA61CC480E400ADE365 /* SuperClass */ = {
 			isa = PBXGroup;
 			children = (
+				C09325481CC9C56700476928 /* Controller */,
 				E1C9BBA71CC480E400ADE365 /* Base64 */,
 			);
 			path = SuperClass;
@@ -561,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C093254B1CC9C57400476928 /* SuperViewController.m in Sources */,
 				E1C9BBC01CC480E400ADE365 /* DESCipherActor.m in Sources */,
 				E1A0FBE11CC4CECB00B8CDEC /* SymCipherDetailController.m in Sources */,
 				C0C9C3611CC7304000E18CF7 /* PwdCipherController.m in Sources */,
@@ -696,6 +710,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/PKIDemo/Main/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ezfen.PKIDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -711,6 +726,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/PKIDemo/Main/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ezfen.PKIDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

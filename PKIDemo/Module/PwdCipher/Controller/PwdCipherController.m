@@ -9,7 +9,7 @@
 #import "PwdCipherController.h"
 #import "PwdCipherActor.h"
 
-@interface PwdCipherController ()
+@interface PwdCipherController () <UITextViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *plainTextView;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
 @property (weak, nonatomic) IBOutlet UITextView *cipherTextView;
@@ -19,13 +19,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    UIGestureRecognizer *tapGusture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagTheBackground)];
+    [self.view addGestureRecognizer:tapGusture];
     self.plainTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.plainTextView.layer.borderWidth = 1;
     self.plainTextView.layer.cornerRadius = 5;
+    self.plainTextView.delegate = self;
     self.cipherTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.cipherTextView.layer.borderWidth = 1;
     self.cipherTextView.layer.cornerRadius = 5;
+    self.cipherTextView.delegate = self;
+    self.pwdTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,7 +38,7 @@
 }
 
 - (IBAction)encrypt:(id)sender {
-    if ([self canDoCrypt:self.plainTextView]) {
+    if ([self canDoCrypt:self.plainTextView textField:self.pwdTextField]) {
         PwdCipherActor *pwdCipherActor = [PwdCipherActor new];
         NSString *plainText = self.plainTextView.text;
         static const char gSalt[] =
@@ -50,7 +54,7 @@
 }
 
 - (IBAction)decrypt:(id)sender {
-    if ([self canDoCrypt:self.cipherTextView]) {
+    if ([self canDoCrypt:self.cipherTextView textField:self.pwdTextField]) {
         PwdCipherActor *pwdCipherActor = [PwdCipherActor new];
         NSString *cipherText = self.cipherTextView.text;
         static const char gSalt[] =
@@ -65,21 +69,11 @@
     }
 }
 
-
-- (BOOL)canDoCrypt:(UITextView *)textView {
-    if (textView.text == nil || [textView.text isEqualToString:@""]) {
-        [textView becomeFirstResponder];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"明文或密文内容为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        return NO;
-    } else if (self.pwdTextField.text == nil || [self.pwdTextField.text isEqualToString:@""]){
-        [self.pwdTextField becomeFirstResponder];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"密钥为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        return NO;
-    } else return YES;
+- (void)tagTheBackground {
+    [self.plainTextView resignFirstResponder];
+    [self.cipherTextView resignFirstResponder];
+    [self.pwdTextField resignFirstResponder];
 }
-
 
 - (void)pwdCipherTest {
     PwdCipherActor *pwdCipherActor = [PwdCipherActor new];
@@ -99,14 +93,5 @@
     NSLog(@"%@", plainText);
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
