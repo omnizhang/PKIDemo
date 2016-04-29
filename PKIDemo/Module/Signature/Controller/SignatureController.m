@@ -33,7 +33,7 @@
 
 - (IBAction)generateSignature:(id)sender {
     if ([self canDoCrypt:self.plainTextView]) {
-        KeyPairGenerator *keyPairGenerator;
+        KeyPairGenerator *keyPairGenerator = [KeyPairGenerator new];
         SignatureActor *signatureActor = [SignatureActor new];
         NSString *stringToSig = self.plainTextView.text;
         SecKeyRef privateKey = [keyPairGenerator getPrivateKeyFromKeyChain];

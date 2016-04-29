@@ -32,6 +32,13 @@
     self.cipherTextView.delegate = self;
 }
 
+- (KeyPairGenerator *)keyPairGenerator {
+    if (!_keyPairGenerator) {
+        _keyPairGenerator = [KeyPairGenerator new];
+    }
+    return _keyPairGenerator;
+}
+
 - (IBAction)encrypt:(id)sender {
     if ([self canDoCrypt:self.plainTextView]) {
         RSACipherActor *rsaCipherActor = [[RSACipherActor alloc] init];
